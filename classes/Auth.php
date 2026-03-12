@@ -29,7 +29,7 @@ class Auth
     {
         try {
             $user = $this->db->query(
-                "SELECT * FROM users WHERE email = ? AND is_active = 1 LIMIT 1",
+                "SELECT u.*, r.role_name FROM users u LEFT JOIN roles r ON u.role_id = r.id WHERE u.email = ? AND u.status = 'active' LIMIT 1",
                 [$email]
             )->fetch();
 
@@ -42,13 +42,13 @@ class Auth
             session_regenerate_id(true);
 
             $_SESSION[self::SESSION_USER_KEY] = $user['id'];
-            $_SESSION[self::SESSION_ROLE_KEY] = $user['role'];
+            $_SESSION[self::SESSION_ROLE_KEY] = $user['role_name'] ?? 'Viewer';
             $_SESSION['user_name']            = $user['first_name'] . ' ' . $user['last_name'];
             $_SESSION['user_email']           = $user['email'];
             $_SESSION['login_time']           = time();
 
             // Update last login timestamp
-            $this->db->update('users', ['last_login' => date('Y-m-d H:i:s')], 'id = ?', [$user['id']]);
+            $this->db->update('users', ['last_login_at' => date('Y-m-d H:i:s')], 'id = ?', [$user['id']]);
 
             $this->logAuthEvent($email, 'login_success');
             return $user;
@@ -103,14 +103,20 @@ class Auth
             throw new RuntimeException('A user with that email already exists.');
         }
 
+        // Map role name to role_id
+        $roleName = $data['role'] ?? 'Inspector';
+        $roleRow = $this->db->query("SELECT id FROM roles WHERE role_name = ? LIMIT 1", [$roleName])->fetch();
+        $roleId = $roleRow ? $roleRow['id'] : 3;
+
         $userId = $this->db->insert('users', [
+            'username'      => strtolower(str_replace(' ', '.', $data['first_name'] . '.' . $data['last_name'])),
             'email'         => $data['email'],
             'password_hash' => password_hash($data['password'], PASSWORD_BCRYPT),
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
-            'role'          => $data['role'] ?? 'inspector',
+            'role_id'       => $roleId,
             'department'    => $data['department'] ?? null,
-            'is_active'     => 1,
+            'status'        => 'active',
             'created_at'    => date('Y-m-d H:i:s'),
         ]);
 
