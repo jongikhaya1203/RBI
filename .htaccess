@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /rbi/
+
+# Protect sensitive directories
+RewriteRule ^(classes|config|database|logs)/ - [F,L]
+
+# Remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]

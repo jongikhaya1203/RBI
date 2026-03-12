@@ -1,0 +1,24 @@
+# Logs
+logs/*.log
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Backups
+backups/*
+!backups/.gitkeep
+
+# IDE / OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Temp files
+test_output.txt
+
+# Claude settings
+.claude/

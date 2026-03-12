@@ -1,0 +1,11 @@
+             Email             │ Password │   Role    │
+  ├───────────────────────────────┼──────────┼───────────┤
+  │ admin@rbi-suite.com           │ admin123 │ Admin     │
+  ├───────────────────────────────┼──────────┼───────────┤
+  │ john.engineer@petrotech.com   │ demo123  │ Engineer  │
+  ├───────────────────────────────┼──────────┼───────────┤
+  │ sarah.inspector@petrotech.com │ demo123  │ Inspector │
+  ├───────────────────────────────┼──────────┼───────────┤
+  │ mike.manager@petrotech.com    │ demo123  │ Engineer  │
+  ├───────────────────────────────┼──────────┼───────────┤
+  │ lisa.viewer@petrotech.com     │ demo123  │ Viewer    │
