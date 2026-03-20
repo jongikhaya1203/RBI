@@ -5,7 +5,7 @@
  */
 
 defined('DB_HOST')     || define('DB_HOST', '127.0.0.1');
-defined('DB_PORT')     || define('DB_PORT', '3308');
+defined('DB_PORT')     || define('DB_PORT', '3306');
 defined('DB_NAME')     || define('DB_NAME', 'rbi_engineering');
 defined('DB_USER')     || define('DB_USER', 'root');
 defined('DB_PASS')     || define('DB_PASS', '');
