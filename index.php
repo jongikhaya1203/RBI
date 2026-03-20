@@ -111,7 +111,7 @@ $csrfToken = generateCsrfToken();
                 <ol class="mb-2">
                     <li>Open <strong>XAMPP Control Panel</strong></li>
                     <li>Click <strong>Start</strong> next to <strong>MySQL</strong></li>
-                    <li>Import the database: open <strong>phpMyAdmin</strong> and import <code>database/schema.sql</code>, <code>database/ml_tables.sql</code>, and <code>database/integration_tables.sql</code></li>
+                    <li>Run the automated migration: open your browser and go to <a href="migrate.php" target="_blank"><code>http://localhost/rbi/migrate.php</code></a> or run <code>php migrate.php</code> in your terminal.</li>
                     <li>Refresh this page</li>
                 </ol>
                 <a href="" class="btn btn-sm btn-outline-danger"><i class="bi bi-arrow-clockwise me-1"></i>Retry Connection</a>
