@@ -122,14 +122,7 @@ set_exception_handler(function (Throwable $e): void {
                         <li>Open <strong>XAMPP Control Panel</strong> (<code>C:\xampp\xampp-control.exe</code>)</li>
                         <li>Click <strong>Start</strong> next to <strong>MySQL</strong></li>
                         <li>Click <strong>Start</strong> next to <strong>Apache</strong></li>
-                        <li>Open <a href="http://localhost/phpmyadmin" target="_blank"><strong>phpMyAdmin</strong></a></li>
-                        <li>Click <strong>Import</strong> tab → upload these files in order:
-                            <ul>
-                                <li><code>database/schema.sql</code></li>
-                                <li><code>database/ml_tables.sql</code></li>
-                                <li><code>database/integration_tables.sql</code></li>
-                            </ul>
-                        </li>
+                        <li>Run the automated migration: open your browser and go to <a href="<?= BASE_URL ?>/migrate.php" target="_blank"><code>http://localhost/rbi/migrate.php</code></a> or run <code>php migrate.php</code> in your terminal.</li>
                         <li>Refresh this page</li>
                     </ol>
                 </div>

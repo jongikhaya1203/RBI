@@ -107,7 +107,10 @@ $csrfToken = generateCsrfToken();
             <?php if ($dbError): ?>
             <div class="alert alert-danger small">
                 <h6 class="alert-heading"><i class="bi bi-database-x me-1"></i> Database Connection Failed</h6>
-                <p class="mb-2">MySQL is not running. Please start it:</p>
+                <div class="p-2 mb-2 rounded" style="background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.2);">
+                    <strong>Error Details:</strong> <?= htmlspecialchars($dbError) ?>
+                </div>
+                <p class="mb-2">Please verify your database configuration and try the following:</p>
                 <ol class="mb-2">
                     <li>Open <strong>XAMPP Control Panel</strong></li>
                     <li>Click <strong>Start</strong> next to <strong>MySQL</strong></li>
