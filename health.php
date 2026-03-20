@@ -35,7 +35,7 @@ try {
 }
 
 // 2. Check essential directories (Uploads & Logs)
-$dirs = ['logs', 'uploads'];
+$dirs = [];
 foreach ($dirs as $dir) {
     $path = __DIR__ . '/' . $dir;
     if (is_dir($path) && is_writable($path)) {
